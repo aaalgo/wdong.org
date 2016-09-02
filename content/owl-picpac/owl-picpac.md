@@ -103,6 +103,11 @@ And samples with annotations can be viewed with ```http://HOSTNAME:18888/l?annot
 
 ![ui]({attach}picpac.jpg)
 
+The server accepts almost all of the perturbation/augmentation parameters,
+so the effects on the training set can be visualized.  For examples,
+the following can be appended to the URL ```&perturb=1&pert_angle=20```.
+
+
 Sometimes when the positive regions are too small compared to the background, it is desirable to use only local areas surrounding the postive regions as training example, so that positive pixels and negative pixels are roughly balanced.  The command below can be used to do the cropping.
 
 ```bash
@@ -186,4 +191,39 @@ layer {
 
 PicPac supports a full range of flexible configurations.  See
 (documentation)[http://picpac.readthedocs.io/en/latest/] for details.
+```
+
+PicPac with TensorFlow
+======================
+PicPac has a simple python interface with the same parameters.
+```python
+    config = dict(loop=True,
+                shuffle=True,
+                reshuffle=True,
+                batch=1,
+                split=1,
+                split_fold=0,
+                annotate='json',
+                channels=FLAGS.channels,
+                stratify=False,
+                mixin="db0",
+                mixin_group_delta=0,
+                #pert_color1=10,
+                #pert_angle=5,
+                #pert_min_scale=0.8,
+                #pert_max_scale=1.2,
+                #pad=False,
+                #pert_hflip=True,
+                channel_first=False
+                )
+    stream = picpac.ImageStream('db', negate=False, perturb=True, **config)
+
+    ...
+        with tf.Session() as sess:
+            sess.run(init)
+            for step in xrange(FLAGS.max_steps):
+                images, labels, pad = stream.next()
+                feed_dict = {X: images,
+                             Y_: labels}
+                _, loss_value = sess.run([train_op, loss], feed_dict=feed_dict)
 ```
