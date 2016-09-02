@@ -9,15 +9,17 @@ model training easy.
 * [Owl](https://github.com/aaalgo/owl): a web UI for efficient image annotation.
 * [PicPac](https://github.com/aaalgo/picpac): PicPac is an image database and streaming library
 that preprocess the images and feed them into a
-deep learning framework.
+deep learning framework. PicPac supports Caffe (fork), MxNet, Nervana, Theano and Tensorflow.
 * [XNN](https://github.com/aaalgo/xnn): a C++ wrapper that provides a unified
 prediction interface
 to all common deep learning frameworks, including
-Caffe, MxNet, Tensorflow, Theano and such.
+Caffe, MxNet, Tensorflow, Theano and other Python-based frameworks.
+* ([Caffe fork with PicPac support](https://github.com/aaalgo/caffe))
 
 The goal is to
 create a model that will detect and localize
 a target object category within images.
+We will use a toy dataset for car plate recognition for illustration.
 
 ================
 
@@ -58,8 +60,9 @@ The URL of the annotation UI is ```http://HOSTNAME:18000/annotate/```.
 
 The UI is designed to minimize hand movements and therefore maximize
 efficiency.  The following design decisions were made:
-- A bounding box is automatically saved by AJAX when created.
-- Refreshing page loads the next batch of examples.
+
+* A bounding box is automatically saved by AJAX when created.
+* Refreshing page loads the next batch of examples.
 
 The annotation process finishes when all images are annotated/viewed.
 The ```VIEWED_AS_DONE``` parameter controls the behavior whether
@@ -81,7 +84,7 @@ PicPac Database
 
 A PicPac database contains images and labels/annotations.
 The annotation produced by Owl is the same format used
-by (Annotorious)[http://annotorious.github.io/].  Actually
+by [Annotorious](http://annotorious.github.io/).  Actually
 Owl uses an extended version of Annotorious.  Below is
 a sample annotation:
 ```js
@@ -114,10 +117,12 @@ Using ```picpac-server``` to serve ```db.crop``` shows this.
 ![ui]({attach}picpac-crop.jpg)
 
 The program ```picpac-split-region``` accepts the following parameters:
--(```--size```, always 50) Scale, or sqrt(width*height), of positive region.
--```--width``` output image wdith.
--```--height``` output image height.
--```--no-scale 1```.  If not set, the cropped region is scaled so
+
+* (```--size```, always 50) Scale, or sqrt(width*height), of positive region.
+* ```--width``` output image wdith.
+* ```--height``` output image height.
+* ```--no-scale 1```.  If not set, the cropped region is scaled so
+
 positive region and negative region are of the specified size.  If
 set, the cropped region is not scaled.  Rather the size parameters
 are used to determine the ratio between positive and negative regions,
@@ -132,9 +137,10 @@ with the above database using the following command.
 xnn/train-caffe-fcn.py fcn db ws
 ```
 where
--```fcn``` is the template name.
--```db``` is the input database.
--```ws``` is the working directory.
+
+* ```fcn``` is the template name.
+* ```db``` is the input database.
+* ```ws``` is the working directory.
 
 Training will start automatically after the command, and can be
 canceled with CTRL+C.  The ```ws``` directory will contain the
