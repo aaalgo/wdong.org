@@ -131,7 +131,7 @@ and the output image size is determined accordingly.
 
 Training
 ========
-XNN provides a couple of templates.  For example, we can train
+XNN provides a couple of templates based on public models.  For example, we can train
 with the above database using the following command.
 ```bash
 xnn/train-caffe-fcn.py fcn db ws
