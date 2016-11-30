@@ -13,7 +13,7 @@ DEPLOY_PATH = env.deploy_path
 
 # Remote server configuration
 production = 'wdong@wagner:22'
-dest_path = '/data/mirror/wdong.org/pelican'
+dest_path = '/data/mirror/wdong.org/'
 
 # Rackspace Cloud Files configuration settings
 env.cloudfiles_username = 'my_rackspace_username'

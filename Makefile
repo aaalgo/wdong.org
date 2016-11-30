@@ -14,7 +14,7 @@ FTP_TARGET_DIR=/
 
 SSH_HOST=wagner
 SSH_USER=wdong
-SSH_TARGET_DIR=/data/mirror/wdong.org/pelican
+SSH_TARGET_DIR=/data/mirror/wdong.org/
 
 S3_BUCKET=my_s3_bucket
 
