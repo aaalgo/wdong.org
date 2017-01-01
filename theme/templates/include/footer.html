@@ -1,0 +1,11 @@
+{% set copy_date = (all_articles[0].date.strftime('%Y') if all_articles else articles[0].date.strftime('%Y')) %}
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                &copy; {{ copy_date }} {{ AUTHOR }}
+            </small></p>
+        </div>
+    </div>
+</footer>

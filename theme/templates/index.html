@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block canonical_rel %}
+<link rel="canonical" href="{{ SITEURL }}">
+{% endblock %}
+
+{% block collapse_latest %}in{% endblock %}
+
+{% block precontent %}
+<section id="content" class="body">
+<div class="row">
+<center>
+  <h2>Welcome to Wei Dong's Blog!</h2>
+  <h3>
+    <font color="#fa1089">Systems</font>
+    <font color="#FFA500">Big Data</font>
+    <font color="#2E8B57">Deep Learning</font>
+    <font color="#F08080">Computer Vision</font>
+    <font color="#00CED1">Audio Processing</font>
+    <font color="#cc1089">C++</font>
+    <!--
+    <font color="#00CED1">开心playing，</font>
+    <font color="red">做最好的boy。</font>
+    <font color="#BA55D3">AM coding,</font>
+    <font color="#601986">PM reading,</font>
+    <font color="#556fb5">one one up!</font>
+    -->
+  </h3>
+</center>
+</div>
+    <!--
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="jumbotron">  
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>{{ SITENAME }}</h1>
+                        <p>{{ SITESUBTITLE }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!--
+    <div class="row">
+        <div class="col-lg-9">
+            <h2>Recent Articles:</h2>
+        </div>
+    </div>
+    -->
+</section>
+{% endblock %}
+
+{% block content %}
+    {% if articles %}
+        {% for article in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
+        <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="{{ SITEURL }}/{{ article.url }}"
+                           rel="bookmark"
+                           title="Permalink to {{ article.title|striptags }}">
+                            {{ article.title }}
+                        </a>
+                        <small>
+                        {% include "include/article_info.html" %}
+                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    {{ article.content }}
+                </div>
+            </div>
+        {% if not loop.last %}
+        <hr/>
+        {% endif %}
+        </div>
+        </article>
+        {% endfor %}
+        <div class="btn-more text-right">
+            <a class="btn btn-default btn-xs twitchy-background" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                View all Articles ...
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+/*
+    function FadeInOnScroll(ObjectList){
+        ObjectList.each(function(i) {
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            if( bottom_of_window > bottom_of_object ){
+                $(this).fadeTo(750,1);
+            }
+        });
+    }
+    articles = $("article").fadeTo(0, 0.05);
+    FadeInOnScroll(articles)
+    $(window).scroll(function() {
+        FadeInOnScroll(articles)
+    });
+    */
+</script>
+{% endblock %}
+
+
