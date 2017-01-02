@@ -252,13 +252,6 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     padding: 0px 9.5px;
 }
 
-/*overwrite pygments color for better readability*/
-.highlight pre span.n,
-.highlight pre span.p,
-.highlight pre span.s {
-    color: #3e3f3a;
-}
-
 /*center responsive images in content*/
 #content img.img-responsive{
     margin: 0px auto;

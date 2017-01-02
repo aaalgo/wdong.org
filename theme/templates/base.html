@@ -261,7 +261,7 @@
                         Tags
                     </a>
                 </li>
-                <li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}in{% endblock %}">
                     {% for tag, articles in tags | sort %}
                     <li>
                     <a href="{{SITE_URL}}/{{tag.url}}">
