@@ -1,7 +1,7 @@
 Title: Go是怎么来的?
 Date: 2015-10-15
 Category: Technology
-Tags: Programming
+Tags: Programming, 中文
 
 pthread是包在OS线程外的。light-weighted thread需要用到用户态线程。
 微软的fiber是用户态的，但是因为是windows世界的，不怎么招人待见。
