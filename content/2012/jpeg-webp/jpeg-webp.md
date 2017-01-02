@@ -15,6 +15,7 @@ The two performance measures lead to the same conclusion:<span style="color: #ff
 
 [ui]({attach}:codec-rmse.png)
 [ui]({attach}:codec-psnr.png)
+[ui]({attach}:montage.jpg)
 
 Image Format Distribution:
 - 1146 image/jpeg
