@@ -2,7 +2,7 @@ Title: JPEG vs JPEG 2000 VS WebP
 Date: 2012-04-12
 Modified: 2017-01-01
 Category: Technology
-Tags: Programming
+Tags: Image
 
 Evaluation protocol:
 
