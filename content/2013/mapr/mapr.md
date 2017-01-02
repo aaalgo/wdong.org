@@ -41,7 +41,7 @@ Roughly we spend 7.5s on each file.
 
 ## Pulling Data From MapR FS without Java </h3>
 
-We already know that MapR FS is able to achieve a throughput of 80MB/s from the <a href="/wordpress/blog/2013/03/18/mapr-file-copy-throughput/">prevous post</a>.  So it should take only 30/80 = 0.375s to retrieve each file from the cluster (without the name node lookup and all other latencies). This is much smaller than the 7.5s we spent in our first setting.  An obvious overhead is the cost to start the hadoop command line.  So in this setting, I'll test directly fetching the data using the C API.  No java code is involved in this setting, but the data is still loaded remotely from the cluster.
+We already know that MapR FS is able to achieve a throughput of 80MB/s from the [prevous post](/mapr-file-copy-throughput.html).  So it should take only 30/80 = 0.375s to retrieve each file from the cluster (without the name node lookup and all other latencies). This is much smaller than the 7.5s we spent in our first setting.  An obvious overhead is the cost to start the hadoop command line.  So in this setting, I'll test directly fetching the data using the C API.  No java code is involved in this setting, but the data is still loaded remotely from the cluster.
 
 Here's the C++ source code:
 ```cpp
