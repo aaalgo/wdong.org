@@ -13,9 +13,11 @@ A few error bars are also shown for jpeg with quality=30 as reference.  This co
 The two performance measures lead to the same conclusion:<span style="color: #ff0000;">  webp wins when compression ratio &lt; 0.12, and jpeg 2000 wins when compression ratio &gt; 0.12.  The performance of jpeg is always comparable to the worse of the other two.</span></h5>
 &nbsp;
 
-[ui]({attach}:codec-rmse.png)
-[ui]({attach}:codec-psnr.png)
-[ui]({attach}:montage.jpg)
+[ui]({attach}codec-rmse.png)
+[ui]({attach}codec-psnr.png)
+
+Sample images.
+[ui]({attach}montage.jpg)
 
 Image Format Distribution:
 - 1146 image/jpeg
