@@ -1,0 +1,128 @@
+#!/bin/bash
+
+BLOG=wdong.org
+AUTOJUMP=$HOME/.autojump/share/autojump/autojump.bash
+
+CMD=$1
+shift
+
+if [ -z "$CMD" ]; then
+    echo Usage:
+    echo blog edit name
+    echo blog attach name file1 file2 ...
+    echo blog make
+    echo blog run
+    echo blog publish
+    exit
+fi
+
+YEAR=`date +%Y`
+
+if [ ! -f $AUTOJUMP ]; then
+    echo Autojump not found.
+    exit
+fi
+
+. $AUTOJUMP
+
+if [ ! -f pelicanconf.py ]
+then
+j $BLOG
+fi
+if [ ! -f pelicanconf.py ]
+then
+    echo Cannot locate blog directory.
+    echo Update BLOG variable
+    exit
+fi
+
+if [ $CMD = make ]; then make html ; exit; fi
+
+if [ $CMD = run ]; then echo running pelican server on :8000; cd output; python -m pelican.server;  exit; fi
+
+if [ $CMD = publish ]; then make html; make ssh_upload ; exit; fi
+
+# all commands below require a name parameter
+
+NAME=$1
+shift
+
+if [ -z "$NAME" ];
+then
+    echo Usage:
+    echo blog $CMD name
+    exit
+fi
+
+TMP=`mktemp`
+
+find content/ -type f -name "*$NAME*" > $TMP
+
+L=`cat $TMP | wc -l`
+
+F=
+
+if [ "$L" -gt 1 ]
+then
+    echo Multiple blog entries found.
+    echo Try provide a more specific name.
+    echo ====
+    cat $TMP
+elif [ "$L" -eq 1 ]
+then
+    F=`cat $TMP`
+elif [ "$L" -eq 0 ]
+then
+    echo Did not find matching blog entries, creating new
+    F=content/$YEAR/$NAME/$NAME.md
+fi
+
+if [ $CMD = new ]
+then
+    F=content/$YEAR/$NAME/$NAME.md
+    if [ -f $F ]
+    then
+        echo "Blog entry already exists"
+        echo $F
+        exit
+    fi
+    CMD=edit
+fi
+
+rm $TMP
+if [ -z "$F" ]
+then
+    exit
+fi
+
+echo Blog entry path: $F
+
+DATE=`date +%Y-%m-%d`
+
+if [ -z "$EDITOR" ]
+then
+    EDITOR=vim
+fi
+
+if [ $CMD = edit ]
+then
+    if [ ! -f $F ]
+    then
+        echo "Creating new entry."
+        mkdir -p `dirname $F`
+        cat > $F <<FOO
+Title: 
+Date: $DATE
+Modified: $DATE
+Category: Technology
+Tags: Programming
+FOO
+   fi
+   if $EDITOR $F
+   then
+       echo vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
+       vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
+   fi
+   exit
+fi
+
