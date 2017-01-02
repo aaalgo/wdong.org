@@ -6,7 +6,7 @@ Tags: Storage, Big Data
 
 Here's how to get fuse_dfs work with MapR.
 
-<strong>Download the [patched source code]({attach}fuse-dfs.tar.bz2").</strong>
+<strong>Download the [patched source code]({attach}fuse-dfs.tar.bz2).</strong>
 
 ## The fuse_dfs code is at hadoop-hdfs-project/hadoop-hdfs/src/contrib/fuse-dfs/src. 
 ## Patch the source code a little bit, including the following:
