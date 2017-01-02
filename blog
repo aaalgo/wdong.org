@@ -56,7 +56,7 @@ fi
 
 TMP=`mktemp`
 
-find content/ -type f -name "*$NAME*" > $TMP
+find content/ -type f -name "*$NAME*.md" > $TMP
 
 L=`cat $TMP | wc -l`
 
@@ -104,12 +104,14 @@ then
     EDITOR=vim
 fi
 
+NEW=
 if [ $CMD = edit ]
 then
     if [ ! -f $F ]
     then
         echo "Creating new entry."
         mkdir -p `dirname $F`
+        NEW=1
         cat > $F <<FOO
 Title: 
 Date: $DATE
@@ -118,10 +120,26 @@ Category: Technology
 Tags: Programming
 FOO
    fi
+   MD5SUM=`cat $F | md5sum`
    if $EDITOR $F
    then
-       echo vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
-       vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
+       MD5SUM2=`cat $F | md5sum`
+       if [ "$MD5SUM" == "$MD5SUM2" ]
+       then
+           echo File not modified.
+           LL=`cat $F | wc -l`
+           if [ -n "$NEW" -a $LL -eq 5 ]
+           then
+               echo Rolling back.
+               rm $F
+               rmdir `dirname $F`
+           fi
+       else
+           git add $F
+           git commit -a
+           echo vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
+           vim "+%s/^Modified: ....-..-..$/Modified: $DATE/" "+wq" $F
+       fi
    fi
    exit
 fi
