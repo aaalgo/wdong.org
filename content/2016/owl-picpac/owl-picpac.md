@@ -1,7 +1,7 @@
 Title: Deep Learning with Owl, PicPac and XNN
 Date: 2016-09-01
 Category: Technology
-Tags: Deep Learning
+Tags: Deep Learning, Image
 
 Owl, PicPac and XNN are three
 tools I wrote to make image-related

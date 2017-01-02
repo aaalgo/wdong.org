@@ -1,6 +1,6 @@
 Title: Image Storage For Deep Learning, Raw or JPG?
 Date: 2015-11-07
-Tags: Deep Learning, Storage
+Tags: Deep Learning, Storage, Image
 Category: Technology
 
 Caffe requires the user to preload training images into a database, and the
