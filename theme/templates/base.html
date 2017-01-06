@@ -265,7 +265,7 @@
                     {% for tag, articles in tags | sort %}
                     <li>
                     <a href="{{SITE_URL}}/{{tag.url}}">
-                            {{tag.name}}
+                        {{tag.name}}[{{articles|length}}]
                         </a>
                     </li>
                     {% endfor %}
