@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BLOG=wdong.org
-AUTOJUMP=$HOME/.autojump/share/autojump/autojump.bash
+AUTOJUMP=/usr/share/autojump/autojump.bash
 
 CMD=$1
 shift
