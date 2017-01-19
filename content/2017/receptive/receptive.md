@@ -18,7 +18,7 @@ the object.
 
 [This program](https://github.com/aaalgo/tfgraph) automatically
 computes the receptive field size of the narrowest layer of
-a TensorFlow model.  This can be used as a guide to tailor a
+a TensorFlow model.  This can be used as a guide to modifying a
 standard network architecture to work with a simple dataset.
 
 
