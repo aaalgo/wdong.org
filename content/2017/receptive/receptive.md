@@ -15,7 +15,7 @@ In addition to cost excessive computation, the
 neural network might be forced to learn structures
 that are not intrinsically attached to the object.
 
-[This program](https://github.com/aaalgo/tfgraph) Automatically
+[This program](https://github.com/aaalgo/tfgraph) automatically
 computes the receptive field size of the narrowest layer of
 a TensorFlow model.  This can be used as a guide to tailor a
 standard network architecture to work with a simple dataset.
