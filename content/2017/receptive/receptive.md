@@ -11,9 +11,10 @@ recognize an object, the receptive field size of the
 narrowest layer of the network must be large enough to 
 capture the characterisic structures of that object.
 Receptive field being too big can be problematic, too.
-In addition to cost excessive computation, the
+In addition to costing excessive computation, the
 neural network might be forced to learn structures
-that are not intrinsically attached to the object.
+that surround, but are not intrinsically attached to or associate with
+the object.
 
 [This program](https://github.com/aaalgo/tfgraph) automatically
 computes the receptive field size of the narrowest layer of
