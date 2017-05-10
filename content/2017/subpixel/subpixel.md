@@ -4,7 +4,7 @@ Modified: 2017-05-10
 Category: Technology
 Tags: Deep Learning, Image
 
-The idea of subpixel convolution was originally proposed by W. Shi et al
+The idea of subpixel convolution was originally proposed by [W. Shi et al](https://arxiv.org/abs/1609.05158)
 from [Magic
 Pony](https://techcrunch.com/2016/06/20/twitter-is-buying-magic-pony-technology-which-uses-neural-networks-to-improve-images/),
 and well explained in [this
